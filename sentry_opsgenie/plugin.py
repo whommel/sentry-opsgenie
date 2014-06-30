@@ -31,7 +31,7 @@ class OpsGeniePlugin(Plugin):
         return (params('api_key', project) and
                 params('recipients', project) and
                 params('alert_url', project))
-                
+
     def post_process(self, group, event, is_new, is_sample, **kwargs):
         if not self.is_configured(group.project):
             return
@@ -52,8 +52,8 @@ class OpsGeniePlugin(Plugin):
             'server_name': event.server_name
         }
 
-         details['event'] = dict(event.data or {})
-        
+        details['event'] = dict(event.data or {})
+
         # populate the map that contains alert properties
         alertProps = {
            "apiKey":api_key,
